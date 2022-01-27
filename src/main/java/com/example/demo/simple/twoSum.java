@@ -34,20 +34,41 @@ public class twoSum {
 
 
     private static int[] twoSum(int [] nums,int target){
-        int sum [] = new int[2];
-        one:
+        Map<Integer,Integer> map = new HashMap<>();
         for (int i=0;i<nums.length;i++){
-            int a = nums[i];
-            for (int j=i+1;j<nums.length-i;j++){
-                int b = nums[j];
-                if (a + b == target){
-                    sum[0] = i;
-                    sum[1] = j;
-                    break one;
-                }
+            if (map.containsKey(target-nums[i])){
+                return new int[]{map.get(target-nums[i]),i};
+            }
+            map.put(nums[i],i);
+        }
+        return new int [] {};
+    }
+
+
+
+    public static void main(String[] args) {
+        int [] nums = {2,7,11,15};
+        int target = 9;
+        int[] sum = twoSum(nums, target);
+//        int[] sum = twoSumSuper(nums, target);
+        System.out.println(Arrays.toString(sum));
+
+    }
+
+    /**
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    private static int[] twoSumLow(int [] nums,int target){
+        for (int i=0;i<nums.length;i++){
+            int value = nums[i];
+            for (int j=i+1;j<nums.length;j++){
+                if (value+nums[j]==target)return new int[]{i,j};
             }
         }
-        return sum;
+        return new int[]{};
     }
 
     private static int[] twoSumSuper(int [] nums,int target){
@@ -60,17 +81,5 @@ public class twoSum {
         }
         return new int[0];
     }
-
-
-    public static void main(String[] args) {
-        int [] nums = {2,7,11,15};
-        int target = 9;
-//        int[] sum = twoSum(nums, target);
-        int[] sum = twoSumSuper(nums, target);
-        System.out.println(Arrays.toString(sum));
-
-    }
-
-
 
 }

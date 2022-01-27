@@ -35,34 +35,14 @@ import java.util.Arrays;
 public class mergeSortedArray {
 
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        if (n==0) return;
-        int len = m + n;
-        int x = 0;
-        for (int i=m;i<len; i++){
-            nums1[i] = nums2[x++];
-        }
-        for (int i=0; i<len; i++){
-            boolean flag = false;
-            for (int j=0; j<len-i-1; j++){
-                if (nums1[j] > nums1[j+1]){
-                    int tmp = nums1[j];
-                    nums1[j] = nums1[j+1];
-                    nums1[j+1] = tmp;
-                    flag = true;
-                }
-            }
-            if (!flag)break;
-        }
-    }
-
-    public static void merge1(int[] nums1, int m, int[] nums2, int n) {
-        int len = m + n;
-        int x = 0;
-        for (int i=m;i<len; i++){
-            nums1[i] = nums2[x++];
+        int len = n + m;
+        int o = 0;
+        for (int i=m;i<len;i++){
+            nums1[i] = nums2[o++];
         }
         Arrays.sort(nums1);
     }
+
 
 
 
