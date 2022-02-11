@@ -70,7 +70,7 @@ public class findCommonCharacters {
 //        String fir = "bool";
 //        String[] split = fir.split("");
 //        System.out.println(Arrays.toString(split));
-        String [] words = new String[]{"cool","lock","cook"};
+        String [] words = new String[]{"cool","lock"};
         findCommonCharacters f = new findCommonCharacters();
         List<String> strings = f.commonChars(words);
         System.out.println(strings.toString());
