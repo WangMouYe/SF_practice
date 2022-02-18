@@ -14,18 +14,18 @@ import java.util.List;
  * https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
  */
 public class binaryTreePostorderTraversal {
+
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
-        dns(root,list);
+        dfs(root,list);
         return list;
     }
 
-    private void dns(TreeNode root, List<Integer> list) {
-        if (root == null)return;
-        dns(root.left,list);
-        dns(root.right,list);
+    private void dfs(TreeNode root, List<Integer> list) {
+        if (root==null)return;
+        dfs(root.left,list);
+        dfs(root.right,list);
         list.add(root.val);
     }
-
 
 }

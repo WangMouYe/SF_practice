@@ -17,15 +17,15 @@ public class binaryTreePreorderTraversal {
 
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
-        dns(root,list);
+        dfs(root,list);
         return list;
     }
 
-    private void dns(TreeNode root, List<Integer> list) {
-        if (root == null)return;
+    private void dfs(TreeNode root, List<Integer> list) {
+        if (root==null)return;
         list.add(root.val);
-        dns(root.left,list);
-        dns(root.right,list);
+        dfs(root.left,list);
+        dfs(root.right,list);
     }
 
 

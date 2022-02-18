@@ -30,19 +30,17 @@ import java.util.List;
  *  详情解析：https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/dai-ma-sui-xiang-lu-che-di-chi-tou-qian-xjof1/
  */
 public class binaryTreeInorderTraversal {
-
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
-        dns(root,list);
+        dfs(root,list);
         return list;
     }
 
-    private void dns(TreeNode root, List<Integer> list) {
-        if (root == null)return;
-        dns(root.left,list);
-        dns(root.right,list);
+    private void dfs(TreeNode root, List<Integer> list) {
+        if (root==null) return;
+        dfs(root.left,list);
         list.add(root.val);
+        dfs(root.right,list);
     }
-
 
 }
