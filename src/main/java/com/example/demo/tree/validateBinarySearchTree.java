@@ -23,12 +23,10 @@ public class validateBinarySearchTree {
 
     private boolean inOrder(TreeNode root) {
         if (root == null)return true;
-
         boolean left = inOrder(root.left);
         if (root.val <= pre)return false;
         pre = Long.valueOf(root.val);
         boolean right = inOrder(root.right);
-
         return left && right;
     }
 
