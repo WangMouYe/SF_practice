@@ -27,6 +27,37 @@ package com.example.demo.array;
  */
 public class RemoveDuplicatesFromSortedArrayII {
     public int removeDuplicates(int[] nums) {
+        int max = Integer.MAX_VALUE;
+        int i=0;
+        for (int j=0;j<nums.length;j++){
+            if (j<2 || nums[j]!=nums[i-2]){
+                max = nums[j];
+                nums[i++] = max;
+            }
+        }
+        return i;
+    }
+
+    public static void main(String[] args) {
+        RemoveDuplicatesFromSortedArrayII r = new RemoveDuplicatesFromSortedArrayII();
+        int [] nums = {1,1,1,2,2,3};
+//        int [] nums = {0,0,1,1,1,1,2,3,3};
+        System.out.println(r.removeDuplicates(nums));
+    }
+
+    public int removeDuplicates8(int[] nums) {
+        int i = 0;
+        for (int j=0;j<nums.length;j++){
+            if (j<2 || nums[j]!=nums[i-2]){
+                nums[i++] = nums[j];
+            }
+        }
+        return i;
+    }
+
+
+
+    public int removeDuplicates4(int[] nums) {
         int n = nums.length;
         if (n<=2)return n;
         int slow = 2, fast = 2;
@@ -40,19 +71,6 @@ public class RemoveDuplicatesFromSortedArrayII {
         return slow;
     }
 
-    public static void main2(String[] args) {
-        RemoveDuplicatesFromSortedArrayII r = new RemoveDuplicatesFromSortedArrayII();
-        int [] nums = {1,1,1,2,2,3};
-//        int [] nums = {0,0,1,1,1,1,2,3,3};
-        System.out.println(r.removeDuplicates(nums));
-    }
-
-
-    public static void main(String[] args) {
-        int [] nums = {1,12,-5,-6,50,3}; // 4
-        // -6 -5 1 3 12 50
-        System.out.println((12+50+3+1)/4);
-    }
 
     /**
      * 官方解法 双指针

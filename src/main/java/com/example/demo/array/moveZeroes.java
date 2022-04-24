@@ -16,6 +16,62 @@ import java.util.Arrays;
  */
 public class moveZeroes {
     public void moveZeroes(int[] nums) {
+        int i = 0;
+        for (int j=0;j<nums.length;j++){
+            if (nums[j]!=0){
+                int tmp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = tmp;
+                i++;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int [] nums = {0,0,1};
+        moveZeroes m = new moveZeroes();
+        m.moveZeroes(nums);
+        System.out.println(Arrays.toString(nums));
+    }
+
+    /**
+     * 把非0的往前挪，挪完之后，后面的就都是0了，然后在用0覆盖后面的。
+     * @param nums
+     */
+    public void moveZeroes1(int[] nums) {
+        if (nums==null || nums.length==0)return;
+        int index = 0;
+        for (int i=0;i<nums.length;i++){
+            if (nums[i]!=0){
+                nums[index++] = nums[i];
+            }
+        }
+        while (index < nums.length){
+            nums[index++] = 0;
+        }
+    }
+
+
+    public void moveZeroes21(int[] nums) {
+        int n =  nums.length;
+        if (n<=1) return;
+        for (int i=0;i<n;i++){
+            boolean flag = false;
+            for (int j=0;j<n-i-1;j++){
+                if (nums[j]==0){
+                    int tmp = nums[j];
+                    nums[j] = nums[j+1];
+                    nums[j+1] = tmp;
+                    flag = true;
+                }
+            }
+            if (!flag)break;
+        }
+        return;
+    }
+
+
+    public void moveZeroes31(int[] nums) {
         int n =  nums.length;
         if (n<=1) return;
         int lastExchange = 0;
@@ -32,30 +88,6 @@ public class moveZeroes {
                 }
             }
             sortBorder = lastExchange;
-            if (!flag)break;
-        }
-        return;
-    }
-
-    public static void main(String[] args) {
-        int [] nums = {0,0,1};
-        moveZeroes m = new moveZeroes();
-        m.moveZeroes(nums);
-//        System.out.println(Arrays.toString());
-    }
-    public void moveZeroes2(int[] nums) {
-        int n =  nums.length;
-        if (n<=1) return;
-        for (int i=0;i<n;i++){
-            boolean flag = false;
-            for (int j=0;j<n-i-1;j++){
-                if (nums[j]==0){
-                    int tmp = nums[j];
-                    nums[j] = nums[j+1];
-                    nums[j+1] = tmp;
-                    flag = true;
-                }
-            }
             if (!flag)break;
         }
         return;

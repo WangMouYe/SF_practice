@@ -1,6 +1,7 @@
 package com.example.demo.array;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * 215. 数组中的第K个最大元素
@@ -16,8 +17,14 @@ import java.util.Arrays;
  */
 public class KthLargestElementInAnArray {
     public int findKthLargest(int[] nums, int k) {
-        Arrays.sort(nums);
-        return nums[nums.length-k];
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int n : nums) {
+            pq.offer(n);
+            if (pq.size()>k){
+                pq.poll();
+            }
+        }
+        return pq.poll();
     }
 
 
@@ -25,6 +32,11 @@ public class KthLargestElementInAnArray {
         KthLargestElementInAnArray k = new KthLargestElementInAnArray();
         int [] nums = {3,2,3,1,2,4,5,5,6};
         System.out.println(k.findKthLargest(nums,4));
+    }
+
+    public int findKthLargest1(int[] nums, int k) {
+        Arrays.sort(nums);
+        return nums[nums.length-k];
     }
 
 }

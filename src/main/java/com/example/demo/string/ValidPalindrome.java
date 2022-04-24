@@ -16,6 +16,27 @@ package com.example.demo.string;
  */
 public class ValidPalindrome {
     public boolean isPalindrome(String s) {
+        s = s.replaceAll("[^a-zA-Z0-9]","").toLowerCase();
+        char[] chars = s.toCharArray();
+        int l = 0, r = s.length()-1;
+        while (l<r) {
+            if (chars[l]==chars[r]) {
+                l++;r--;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+//        String str = "A man, a plan, a canal: Panama";
+        String str = "race a car";
+        ValidPalindrome v = new ValidPalindrome();
+        System.out.println(v.isPalindrome(str));
+    }
+
+
+    public boolean isPalindrome2(String s) {
         StringBuffer sb = new StringBuffer();
         int l = s.length();
         for (int i=0;i<l;i++){
@@ -27,11 +48,4 @@ public class ValidPalindrome {
         StringBuffer sbReverse = new StringBuffer(sb).reverse();
         return sbReverse.toString().equals(sb.toString());
     }
-
-    public static void main(String[] args) {
-        String str = "A man, a plan, a canal: Panama";
-        ValidPalindrome v = new ValidPalindrome();
-        System.out.println(v.isPalindrome(str));
-    }
-
 }
