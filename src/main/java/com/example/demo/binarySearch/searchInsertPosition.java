@@ -30,16 +30,19 @@ package com.example.demo.binarySearch;
 public class searchInsertPosition {
     public int searchInsert(int[] nums, int target) {
         int n = nums.length;
-        int low = 0;
-        int high = n-1;
+        int low = 0, high = n-1;
         while (low <= high){
             int mid = low + ((high-low)>>1);
-            if (nums[mid] == target)return mid;
-            else if (nums[mid] < target) low = mid+1;
-            else high = mid-1;
+            if (nums[mid]==target)return mid;
+            else if (nums[mid]<target) low = mid + 1;
+            else high = mid - 1;
         }
-        System.out.println("low:"+low);
-        System.out.println("high:"+high);
         return low;
     }
+
+    public static void main(String[] args) {
+        searchInsertPosition s = new searchInsertPosition();
+        System.out.println(s.searchInsert(new int [] {1,3,5,6},5));
+    }
+
 }

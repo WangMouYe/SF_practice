@@ -15,37 +15,41 @@ package com.example.demo.binarySearch;
  */
 public class binarySearch {
 
-
     public int search(int[] nums, int target) {
         int n = nums.length;
-        return searchInternally(nums,0,n-1,target);
-    }
-
-    private int searchInternally(int[] nums, int low, int high, int target) {
-        if (low>high)return -1;
-        int mid = low + ((high-low)>>1);
-        if (nums[mid]==target) return mid;
-        else if (nums[mid]<target) return searchInternally(nums,mid+1,high,target);
-        return searchInternally(nums,low,mid-1,target);
-    }
-
-
-    /**
-     * while循环
-     * @param nums
-     * @param target
-     * @return
-     */
-    public int search1(int[] nums, int target) {
-        int n = nums.length;
-        int low = 0;
-        int high = n-1;
-        while (low<=high){
+        int low = 0, high = n-1;
+        while (low <= high){
             int mid = low + ((high-low)>>1);
-            if (nums[mid] == target)return mid;
-            else if (nums[mid] < target) low = mid + 1;
-            else high = mid - 1;
+            if (nums[mid]==target){
+                return mid;
+            }else if (nums[mid]<target){
+                low = mid+1;
+            }else {
+                high = mid-1;
+            }
         }
         return -1;
     }
+
+
+    public int searchBinary(int [] nums,int target){
+        return searchBinaryInternally(nums,0,nums.length-1,target);
+    }
+
+    private int searchBinaryInternally(int[] nums, int low, int high, int target) {
+        if (low > high)return -1;
+        int mid = low + ((high-low)>>1);
+        if (nums[mid] == target)return mid;
+        else if (nums[mid] < target) return searchBinaryInternally(nums,mid+1,high,target);
+        else return searchBinaryInternally(nums,low,mid-1,target);
+    }
+
+
+    public static void main(String[] args) {
+        binarySearch b = new binarySearch();
+        int search = b.search(new int[]{-1, 0, 3, 5, 9, 12}, 9);
+        System.out.println(search);
+    }
+
+
 }

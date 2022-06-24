@@ -25,14 +25,16 @@ public class validPerfectSquare {
         while (low <= high){
             int mid = low + ((high-low)>>1);
             long sqrt = (long) mid * mid;
-            if (sqrt < num)
-                low = mid +1;
-            else if (sqrt > num)
-                high = mid -1;
-            else
-                return true;
+            if (sqrt < num) low = mid + 1;
+            else if (sqrt > num) high = mid - 1;
+            else return true;
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        validPerfectSquare v = new validPerfectSquare();
+        System.out.println(v.isPerfectSquare(14));
     }
 
 
